@@ -13,6 +13,7 @@ Requirements for initial demo. Each maps to roadmap phases.
 - [ ] **PERC-02**: YOLO-World detects expanded prompt set on USB-C frames at ≥10 fps for 60 s sustained (helios baseline bench)
 - [ ] **PERC-03**: MediaPipe Hands returns landmarks on USB-C frames at ≥15 fps for 60 s sustained
 - [ ] **PERC-04**: Combined perception loop runs YOLO + Hands at ≥10 Hz for 60 s on USB-C cam
+- [ ] **PERC-05**: `SharedPerceptionState` exposes latest YOLO bboxes + hands to handlers without re-running YOLO (avoids duplicate inference + L-09 race)
 
 ### Vision (cloud + offline fallback)
 
@@ -39,7 +40,6 @@ Requirements for initial demo. Each maps to roadmap phases.
 ### State machine + handlers (net-new)
 
 - [ ] **MODE-01**: State machine `IDLE → LOCOMOTION → MANIPULATION → IDLE` transitions correctly per scene 3 design; `reset_demo()` returns to clean IDLE between runs
-- [ ] **PERC-05**: `SharedPerceptionState` exposes latest YOLO bboxes + hands to handlers without re-running YOLO (avoids duplicate inference + L-09 race)
 - [ ] **HDLR-01**: `SCENE_DESC` handler — frame → GPT-4o vision → TTS in <3 s; uses user transcript as prompt (per L-11)
 - [ ] **HDLR-02**: `DISTANCE_QUERY` handler — YOLO target → wrist haptic centers head → sonar reads → spoken distance
 - [ ] **HDLR-03**: `GRAB_GUIDANCE` handler — LOCOMOTION (wrist compass to bbox) → MANIPULATION (mute belt, hand-to-object compass on wrist) → IDLE on overlap or 30 s timeout
@@ -89,31 +89,39 @@ Explicitly excluded. Documented to prevent scope creep.
 
 ## Traceability
 
-Filled by roadmap creation.
+Filled by roadmap creation. Each requirement maps to exactly one phase.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| SONR-02 | Phase 1 | Pending |
 | CAM-01, CAM-02 | Phase 2 | Pending |
 | PERC-01, PERC-02, PERC-03, PERC-04, PERC-05 | Phase 2 | Pending |
+| PTT-01, HAPT-01, SONR-01 | Phase 3 | Pending |
 | VISN-01, VISN-02, VISN-03, VISN-04 | Phase 4 | Pending |
 | VOIC-01, VOIC-02, VOIC-03 | Phase 4 | Pending |
-| PTT-01 | Phase 1, Phase 3 | Pending |
-| HAPT-01 | Phase 1, Phase 3 | Pending |
-| SONR-01, SONR-02 | Phase 1, Phase 3 | Pending |
 | MODE-01 | Phase 4 | Pending |
 | HDLR-01 | Phase 4 | Pending |
+| DEMO-02 | Phase 4 | Pending |
 | HDLR-02 | Phase 5 | Pending |
+| DEMO-03 | Phase 5 | Pending |
 | HDLR-03 | Phase 6 | Pending |
 | DEMO-01 | Phase 6 | Pending |
-| DEMO-02 | Phase 4 | Pending |
-| DEMO-03 | Phase 6 | Pending |
 | DEMO-04 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 25 total
 - Mapped to phases: 25
 - Unmapped: 0 ✓
+- Each requirement assigned to exactly one phase ✓
+
+**Phase requirement counts:**
+- Phase 1: 1 requirement (SONR-02)
+- Phase 2: 7 requirements (CAM-01, CAM-02, PERC-01–05)
+- Phase 3: 3 requirements (PTT-01, HAPT-01, SONR-01)
+- Phase 4: 9 requirements (VISN-01–04, VOIC-01–03, MODE-01, HDLR-01, DEMO-02)
+- Phase 5: 2 requirements (HDLR-02, DEMO-03)
+- Phase 6: 3 requirements (HDLR-03, DEMO-01, DEMO-04)
 
 ---
 *Requirements defined: 2026-05-09*
-*Last updated: 2026-05-09 after initial definition*
+*Last updated: 2026-05-09 after roadmap creation — traceability refined to one phase per requirement*
