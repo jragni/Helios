@@ -1,0 +1,82 @@
+# --- Python ---------------------------------------------------------------
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# --- Secrets ---
+# Never relax these. `git add -A` once = key in git history forever.
+/.env
+/env
+.env.*
+.env.local
+*.env
+*.pem
+*.key
+secrets.json
+credentials.json
+firmware/**/secrets.h
+
+# --- PII risk: voice / vision captures ------------------------------------
+# Mic recordings, TTS cache, frame grabs may contain user audio/imagery.
+cache/
+audio/
+recordings/
+frames/
+captures/
+screenshots/
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.log
+# Root-only image dumps — debug frames, MJPEG saves, screenshots dropped
+# at the project root. Doesn't affect docs/ or src/ assets.
+/*.jpg
+/*.jpeg
+/*.png
+/*.bmp
+debug_*.jpg
+debug_*.png
+debug_*.jpeg
+frame_*.jpg
+frame_*.png
+
+# --- ML model weights (large, downloadable) -------------------------------
+*.pt
+*.pth
+*.onnx
+*.task
+*.gguf
+*.safetensors
+*.h5
+
+# --- Arduino / PlatformIO / ESP32 build artifacts -------------------------
+firmware/**/build/
+firmware/**/.pio/
+firmware/**/.pioenvs/
+firmware/**/.piolibdeps/
+*.bin
+*.elf
+*.map
+
+# --- Bench cache (regen-able) ---------------------------------------------
+bench/results-cache/
+
+# --- IDE / editor ---------------------------------------------------------
+.idea/
+.vscode/
+.zed/
+*.iml
+
+# --- macOS ----------------------------------------------------------------
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
