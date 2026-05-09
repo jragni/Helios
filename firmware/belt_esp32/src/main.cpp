@@ -1,4 +1,4 @@
-// Helios haptic belt — 3× HC-SR04 at 120° spacing → 3× ERM vibration motors.
+// Helios haptic belt — 2× HC-SR04 at 180° spacing → 2× ERM vibration motors.
 // Standalone: no WiFi, no MQTT. Closer = stronger vibration.
 //
 // Wiring per zone (HC-SR04 echo is 5V — level-shift ECHO to 3.3V):
@@ -12,8 +12,7 @@
 //
 // GPIO assignments:
 //   Zone A (  0°): TRIG=4,  ECHO=5,  MOTOR=16
-//   Zone B (120°): TRIG=13, ECHO=15, MOTOR=17
-//   Zone C (240°): TRIG=27, ECHO=26, MOTOR=21
+//   Zone B (180°): TRIG=13, ECHO=15, MOTOR=17
 
 #include <Arduino.h>
 
@@ -24,10 +23,9 @@ struct Zone {
     uint8_t pwmCh;
 };
 
-static Zone ZONES[3] = {
+static Zone ZONES[2] = {
     {4,  5,  16, 0},  // Zone A (  0°)
-    {13, 15, 17, 1},  // Zone B (120°)
-    {27, 26, 21, 2},  // Zone C (240°)
+    {13, 15, 17, 1},  // Zone B (180°)
 };
 
 static const uint32_t ECHO_TIMEOUT_US = 25000;  // ~4.3 m max; no point waiting longer
