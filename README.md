@@ -35,9 +35,11 @@ The result is an intuitive spatial map felt directly on the body.
 
 | Zone | Position | TRIG | ECHO | MOTOR |
 |---|---|---|---|---|
-| Front (0°)   | Navel     | GPIO 4  | GPIO 5  | GPIO 16 |
-| Right (120°) | Right hip | GPIO 13 | GPIO 15 | GPIO 17 |
-| Left (240°)  | Left hip  | GPIO 27 | GPIO 26 | GPIO 21 |
+| A (0°)   | Front     | GPIO 4  | GPIO 5  | GPIO 16 |
+| B (120°) | Right hip | GPIO 13 | GPIO 15 | GPIO 17 |
+| C (240°) | Left hip  | GPIO 27 | GPIO 26 | GPIO 21 |
+
+**Power:** HC-SR04 VCC → ESP32 VIN (5V). All GNDs shared.
 
 ---
 
